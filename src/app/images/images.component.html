@@ -1,0 +1,29 @@
+
+<h2 *ngIf="images$" style="padding:10px;">Images</h2>
+
+<table class="images">
+    <tr>
+        <th>id</th>
+        <th>filename</th>
+        <th>camera</th>
+        <th>date</th>
+        <th>time</th>
+        <th>description</th>
+        <th>lastUpdate</th>
+        <th>status</th>
+    </tr>
+    <tr *ngFor='let image of images$'>
+        <td>{{ image.id }}
+            <br>
+            <button style="font-size: 10px" (click)="updateImage(image.id)" >Edit</button> 
+        </td>
+        <td>{{ image.filename }}</td>
+        <td>{{ image.sourceCamera }}</td>
+        <td>{{ image.date }}</td>
+        <td>{{ image.time }}</td>
+        <td>{{ image.description }}</td>
+        <td>{{ image.lastUpdate }}</td>
+        <td>{{ image.status }}</td>
+    </tr>
+
+</table>

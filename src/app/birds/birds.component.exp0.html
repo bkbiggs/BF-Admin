@@ -1,0 +1,49 @@
+
+<!-- <h2 *ngIf="birds$" style="padding:10px;">Bird Names</h2> -->
+<h2 style="padding:10px;">Bird Names</h2>
+
+<!-- <form > -->
+    <table class="birdNames">
+        <tr>
+            <th>id</th>
+            <th>Common Name</th>
+            <th>Scientific Name</th>
+        </tr>
+
+        <tr *ngFor='let bird of birds$'>
+
+            <td>{{ bird.id }}
+                <div *ngIf="!editingBird">
+                    <button style="font-size: 10px;" (click)="editBird(bird.id)">Edit</button>
+                </div>
+
+                <div *ngIf="editingBird">
+                    <button style="font-size: 10px;" (click)="updateBird(bird.id, myComName.value, mySciName.value)">Update</button>
+                    <button style="font-size: 10px;" (click)="cancelBird(myComName.value)">Cancel</button>
+                </div>
+
+            </td>
+
+            <td>
+                <div *ngIf="!editingBird">
+                    {{ bird.commonName }}
+                </div>
+                <div *ngIf="editingBird">
+                    <input #myComName name="myComName" value="{{bird.commonName}}">
+                </div>
+            </td>
+
+            <td>
+                <div *ngIf="!editingBird">
+                    {{ bird.scientificName }}
+                </div>
+                <div *ngIf="editingBird">
+                    <input #mySciName name="mySciName" value="{{bird.scientificName}}">
+                </div>
+            </td>
+
+        </tr>
+
+    </table>
+<!-- </form> -->
+<hr>

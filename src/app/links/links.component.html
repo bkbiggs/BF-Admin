@@ -1,0 +1,55 @@
+
+<h2 *ngIf="links$" style="padding: 10px">Bird/Picture Links</h2>
+<table class="linkNames">
+    <tr>
+        <th>link id</th>
+        <th>bird id</th>
+        <th>image id</th>
+        <th>action</th>
+    </tr>
+    <tr *ngFor='let link of links$'>
+        <td>
+            {{ link.id }}
+
+        </td>
+        <td>
+            {{ link.birdId }}
+            <!-- not sure we need to update these entries -->
+            <!-- <input style="font-style: italic; color:blue;" #myBirdId name="myBirdId" value="{{link.bird_id}}"> -->
+        </td>
+        <td>
+            {{ link.imageId }}
+            <!-- not sure we need to update these entries -->
+            <!-- <input style="font-style: italic; color:blue;" #myBirdId name="myBirdId" value="{{link.birdPicture_id}}"> -->
+        </td>
+        <td>
+            <!-- not sure we need to update these entries -->
+            <!-- <button style="font-size: 10px;" 
+                (click)="updateLink(link.idbird_birdPicture, 
+                myBirdId.value, myImageId.value)">
+                Update</button> -->
+            <button style="font-size: 10px;"
+                (click)="deleteLink(link.id)">
+                Delete</button>
+            <!-- not sure we need to cancel these entries if update is not performed -->
+            <!-- <button style="font-size: 10px;" 
+                (click)="cancelLink()">
+                Cancel</button> -->
+        </td>
+    </tr>
+
+</table>
+
+<p></p>
+<!-- LinkId:
+<input #newLinkId name="newLinkId" value=""> -->
+<br>
+BirdId:
+<input #newBirdId name="newBirdId" value="">
+<br>
+ImageId:
+<input #newImageId name="newImageId" value="">
+<p></p>
+<button (click)="createLink(newBirdId.value, newImageId.value)">Add</button>
+
+<hr>

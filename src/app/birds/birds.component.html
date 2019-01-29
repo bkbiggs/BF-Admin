@@ -1,0 +1,79 @@
+<!-- <h2 *ngIf="birds$" style="padding:10px;">Bird Names</h2> -->
+<h2 style="padding:10px;">Bird Names</h2>
+
+<table class="birdNames">
+    <tr>
+        <th>id</th>
+        <th>Common Name</th>
+        <th>Scientific Name</th>
+        <th>Web data</th>
+        <th>Web image</th>
+    </tr>
+
+    <tr *ngFor='let bird of birds$'>
+
+        <td>
+            {{ bird.id }}
+            <button 
+                style="font-size: 10px;" 
+                (click)="updateBird(bird.id, myComName.value, mySciName.value, myWebData.value, myWebImage.value)">
+                Update
+            </button>
+            <button 
+                style="font-size: 10px;" 
+                (click)="deleteBird(bird.id)">
+                Delete
+            </button>
+            <button 
+                style="font-size: 10px;" 
+                (click)="cancelBird(myComName.value)">
+                Cancel
+            </button>
+
+        </td>
+
+        <td>
+            {{ bird.commonName }}
+            <input style="font-style: italic; color:blue;" #myComName name="myComName" value="{{bird.commonName}}">
+        </td>
+
+        <td>
+            {{ bird.scientificName }}
+            <input style="font-style: italic; color:blue;" #mySciName name="mySciName" value="{{bird.scientificName}}">
+        </td>
+
+        <td>
+            {{ bird.webData }}
+            <input style="font-style: italic; color:blue;" #myWebData name="myWebData" value="{{bird.webData}}">
+        </td>
+    
+       <td>
+            {{ bird.webImage }}
+            <input style="font-style: italic; color:blue;" #myWebImage name="myWebImage" value="{{bird.webImage}}">
+        </td>
+            </tr>
+
+</table>
+<hr>
+
+<p></p>
+
+Common Name:
+<input #newComName name="newComName" value="">
+
+<br>
+Scientific Name:
+<input #newSciName name="newSciName" value="">
+
+<br>
+Web Data:
+<input #newWebData name="newWebData" value="">
+
+<br>
+Web Image:
+<input #newWebImage name="newWebImage" value="">
+
+<p></p>
+<button (click)="createBird(newComName.value, newSciName.value, newWebData.value, newWebImage.value)">Add</button>
+
+<hr>
