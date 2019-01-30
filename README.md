@@ -1,4 +1,7 @@
-# MyNg7
+# BF-Admin
+
+One of our components for the management of our "bird feeder" project. This includes a couple of computers for running photo collection of the bird feeder from in-side the house, and from a post mounted next to the feeder. There is a set of computers that are also in place to collect these pictures, add content to the photos, record the content into a database and present the content for admin and end-user consumption. I expect most of the consumption at this time to be via web clients, however I have a longer term objective to provide a IOS and Android client to work from.
+The most important thing here is that I get to continue to keep my family kids happy! (oh, and to learn new languages and tools to stay in touch with our industry growth.)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
 
