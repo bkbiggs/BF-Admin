@@ -1,4 +1,5 @@
 table, th, td {
+    margin: 10px;
     border: 1px solid grey;
     border-collapse: collapse;
     padding: 5px;
@@ -8,14 +9,4 @@ table, th, td {
   }
   table tr:nth-child(even) {
     background-color: #ffffff;
-  }
-
-  table.linkNames {
-    // table-layout: fixed;
-    table-layout: auto;
-    width: 55%;  
-  }
-
-  th, td {
-      padding: 10px;
   }

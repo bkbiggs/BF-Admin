@@ -12,6 +12,7 @@
 
     <tr *ngFor='let bird of birds$'>
 
+        <!-- <div *ngIf="editingBird && (bird.id == editingBirdId)"> -->
         <td>
             {{ bird.id }}
             <button 
@@ -34,7 +35,9 @@
 
         <td>
             {{ bird.commonName }}
-            <input style="font-style: italic; color:blue;" #myComName name="myComName" value="{{bird.commonName}}">
+                <input 
+                style="font-style: italic; color:blue;" 
+                #myComName name="myComName" value="{{bird.commonName}}">
         </td>
 
         <td>
@@ -51,7 +54,37 @@
             {{ bird.webImage }}
             <input style="font-style: italic; color:blue;" #myWebImage name="myWebImage" value="{{bird.webImage}}">
         </td>
-            </tr>
+    <!-- </div> -->
+
+    <!-- <div *ngIf="!(editingBird && (bird.id == editingBirdId))">
+            <td>
+                {{ bird.id }}
+                <button 
+                    style="font-size: 10px;" 
+                    (click)="editBird()">
+                    Edit
+                </button>
+            </td>
+    
+            <td>
+                {{ bird.commonName }}
+            </td>
+    
+            <td>
+                {{ bird.scientificName }}
+            </td>
+    
+            <td>
+                {{ bird.webData }}
+            </td>
+        
+           <td>
+                {{ bird.webImage }}
+            </td>
+        </div> -->
+        
+
+    </tr>
 
 </table>
 <hr>

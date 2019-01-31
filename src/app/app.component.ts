@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// import { Link } from '../links/link.model';
-
-import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +7,10 @@ import { DataService } from './data.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  // links$: Link[];
-  
-  constructor(private dataservice: DataService) {}
+  constructor() {}
   
   ngOnInit() {
-    // return (
-    //   this.dataservice.getLinks().subscribe(data => this.links$ = data)
-    // )
   }
 
-  // public onEdit(event: any) {
-    
-  //   console.log("onEdit(" + event + ")");
-  // }
 
 }

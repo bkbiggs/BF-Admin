@@ -15,15 +15,83 @@
     <tr *ngFor='let image of images$'>
         <td>{{ image.id }}
             <br>
-            <button style="font-size: 10px" (click)="updateImage(image.id)" >Edit</button> 
+            <button 
+                *ngIf="!(editOn)" 
+                style="font-size: 10px" 
+                (click)="editImage(image.id)" 
+            >Edit</button>
+            <button 
+                *ngIf="editOn && (image.id == editId)" 
+                style="font-size: 10px" 
+                (click)="updateImage( image.id, myFilename.value, mySourceCamera.value, myDate.value, myTime.value, myDescription.value, myLastUpdate.value, myStatus.value)" 
+            >Update</button>
+            <button 
+                *ngIf="editOn && (image.id == editId)" 
+                style="font-size: 10px" 
+                (click)="deleteImage(image.id)" 
+                >Delete</button>
+            <button 
+                *ngIf="editOn && (image.id == editId)" 
+                style="font-size: 10px" 
+                (click)="cancelImage(image.id)" 
+                >Cancel</button>
+
         </td>
-        <td>{{ image.filename }}</td>
-        <td>{{ image.sourceCamera }}</td>
-        <td>{{ image.date }}</td>
-        <td>{{ image.time }}</td>
-        <td>{{ image.description }}</td>
-        <td>{{ image.lastUpdate }}</td>
-        <td>{{ image.status }}</td>
+        <td>
+            {{ image.filename }}
+            <input 
+                *ngIf="editOn && (image.id == editId)"
+                style="font-style: italic; color:blue; width: 15em;"  
+                #myFilename placeholder="myFilename" 
+                value="{{image.filename}}">
+        </td>
+        <!-- Need to add a dropdown list for values of sourceCamera to choose  -->
+        <td>{{ image.sourceCamera }}
+                <input 
+                *ngIf="editOn && (image.id == editId)"
+                style="font-style: italic; color:blue; width: 6em;"  
+                #mySourceCamera placeholder="mySourceCamera" 
+                value="{{image.sourceCamera}}">
+        </td>
+        <td>{{ image.date }}
+                <input 
+                type="date"
+                *ngIf="editOn && (image.id == editId)"
+                style="font-style: italic; color:blue; width: 9em;"  
+                #myDate placeholder="myDate" 
+                value="{{image.date}}">
+        </td>
+        <td>{{ image.time }}
+                <input 
+                type="string"
+                *ngIf="editOn && (image.id == editId)"
+                style="font-style: italic; color:blue; width: 9em;"  
+                #myTime placeholder="myTime" 
+                value="{{image.time}}">
+        </td>
+        <td>{{ image.description }}
+                <textarea 
+                *ngIf="editOn && (image.id == editId)"
+                #myDescription placeholder="myDescription" 
+                cols="30" rows="2"
+                style="font-style: italic; color:blue; width: 25em;"  
+                value="{{image.description}}"></textarea>
+        </td>
+        <td>{{ image.lastUpdate }}
+                <input 
+                type="datetime"
+                *ngIf="editOn && (image.id == editId)"
+                style="font-style: italic; color:blue; width: 13em;"  
+                #myLastUpdate placeholder="myLastUpdate" 
+                value="{{image.lastUpdate}}">
+        </td>
+        <td>{{ image.status }}
+                <input 
+                *ngIf="editOn && (image.id == editId)"
+                style="font-style: italic; color:blue; width: 10em;"  
+                #myStatus placeholder="myStatus" 
+                value="{{image.status}}">
+        </td>
     </tr>
 
 </table>

@@ -13,29 +13,24 @@ export class LinksComponent implements OnInit {
 
   links$: Link[];
 
-  constructor(private dataservice_c: DataService) { }
+  constructor(private dataservice_b: DataService) { }
 
   ngOnInit() {
     return (
-      this.dataservice_c.getLinks().subscribe(data => this.links$ = data)
+      this.dataservice_b.getLinks().subscribe(data => this.links$ = data)
     )
   }
 
 
   createLink(id2: string, id3: string) {
     console.log("createLink(" + id2 + ", " + id3 + ")");
-    this.dataservice_c.createLink( id2, id3);
+    return this.dataservice_b.createLink( id2, id3).subscribe(data => this.links$ = data);
   }
-
-  // updateLink(id: string, id2: string, id3: string) {
-  //   console.log("updateLink(" + id + ", " + id2 + ", " + id3 + ")");
-  //   this.dataservice_c.updateLink(id, id2, id3);
-  // }
 
 
   deleteLink(id: string) {
     console.log("deleteLink(" + id + ")");
-    return (this.dataservice_c.deleteLink(id));
+    return (this.dataservice_b.deleteLink(id).subscribe(data => this.links$ = data));
   }
 
 }
