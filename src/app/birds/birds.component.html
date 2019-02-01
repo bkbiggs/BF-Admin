@@ -1,5 +1,8 @@
 <!-- <h2 *ngIf="birds$" style="padding:10px;">Bird Names</h2> -->
 <h2 style="padding:10px;">Bird Names</h2>
+<p></p>
+Message: {{ message }}
+<p></p>
 
 <table class="birdNames">
     <tr>
@@ -11,7 +14,7 @@
     </tr>
 
     <tr *ngFor='let bird of birds$'>
-
+    <!-- <td><div style="height:40px; overflow:hidden">Sample</div></td> -->
         <!-- <div *ngIf="editingBird && (bird.id == editingBirdId)"> -->
         <td>
             {{ bird.id }}
@@ -46,13 +49,22 @@
         </td>
 
         <td>
+                <div style="height:192px; column-width:30%; overflow:hidden">
             {{ bird.webData }}
             <input style="font-style: italic; color:blue;" #myWebData name="myWebData" value="{{bird.webData}}">
+            </div>
         </td>
     
        <td>
+            <div style="height:192px; overflow:hidden">
             {{ bird.webImage }}
             <input style="font-style: italic; color:blue;" #myWebImage name="myWebImage" value="{{bird.webImage}}">
+            </div>
+        </td>
+        <td>
+            <a href="{{myWebImage.value}}" target="_blank">
+                <img class="photo" src="{{myWebImage.value}}" alt="image" height="192px" >
+            </a>
         </td>
     <!-- </div> -->
 

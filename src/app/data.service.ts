@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -18,6 +19,19 @@ import { Image } from './image.model';
 })
 export class DataService {
 
+  // links$: Link[];
+
+  private messageSource = new BehaviorSubject<string>("default message");
+  currentMessage = this.messageSource.asObservable();
+
+  // private linkArray = new BehaviorSubject<links$[]>;
+  // currentLinkArray = this.linkArray.asObservable();
+
+
+
+  changeMessage(message: string) {
+    this.messageSource.next(message);
+  }
 
   // add createImageUrl
   updateImageUrl =  'http://10.0.1.14/updateDescription/myDescEdit.php';
@@ -93,10 +107,10 @@ export class DataService {
   // run the update for the change interaction
   updateBird(id: string, com: string, sci: string, webData: string, webImage: string)  {  
     console.log("updateBird(" + id + ", " + com + ", " + sci + "," + webData + ", " + webImage + ")");    
-    var request = this.updateBirdUrl + "?id=" + id + "&comName=" + com + "&sciName=" + sci;    
+    var request = this.updateBirdUrl + "?id=" + id + "&comName=" + com + "&sciName=" + sci + "&webData=" + webData + "&webImage=" + webImage    
     console.log("Update: " + request);
     return this._http.get<Bird[]>(request);
-  }
+  };
 
   deleteBird(id: string) {
     console.log("deleteBird(" + id + ")");

@@ -1,9 +1,13 @@
 
 <h2 *ngIf="images$" style="padding:10px;">Images</h2>
+<p></p>
+Message: {{ message }}
+<p></p>
 
 <table class="images">
     <tr>
         <th>id</th>
+        <th>image</th>
         <th>filename</th>
         <th>camera</th>
         <th>date</th>
@@ -38,12 +42,24 @@
 
         </td>
         <td>
+            <a href="http://10.0.1.14/images/{{image.filename}}" target="_blank">
+                <img class="photo"
+                src="http://10.0.1.14/images/icon_{{image.filename}}"
+                alt="image">
+            </a>
+        </td>        
+        <td>
             {{ image.filename }}
             <input 
                 *ngIf="editOn && (image.id == editId)"
                 style="font-style: italic; color:blue; width: 15em;"  
                 #myFilename placeholder="myFilename" 
                 value="{{image.filename}}">
+            <div 
+                *ngFor="let link of links$">
+                <!-- *ngIf="link.imageId == editId"> -->
+                {{ link.id }}
+            </div>
         </td>
         <!-- Need to add a dropdown list for values of sourceCamera to choose  -->
         <td>{{ image.sourceCamera }}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Link } from '../link.model';
 
@@ -13,24 +13,31 @@ export class LinksComponent implements OnInit {
 
   links$: Link[];
 
-  constructor(private dataservice_b: DataService) { }
+  message:string;
+
+  constructor(private dataservice: DataService) { }
 
   ngOnInit() {
+    this.dataservice.currentMessage.subscribe(message => this.message = message);
     return (
-      this.dataservice_b.getLinks().subscribe(data => this.links$ = data)
+      this.dataservice.getLinks().subscribe(data => this.links$ = data)
     )
   }
 
 
   createLink(id2: string, id3: string) {
     console.log("createLink(" + id2 + ", " + id3 + ")");
-    return this.dataservice_b.createLink( id2, id3).subscribe(data => this.links$ = data);
+    this.dataservice.createLink( id2, id3).subscribe(data => this.links$ = data);
+    this.dataservice.changeMessage( "added link for " + id2 + " & " + id3 );
+    return
   }
 
 
   deleteLink(id: string) {
     console.log("deleteLink(" + id + ")");
-    return (this.dataservice_b.deleteLink(id).subscribe(data => this.links$ = data));
+    this.dataservice.deleteLink(id).subscribe(data => this.links$ = data);
+    this.dataservice.changeMessage("deleted link " + id);
+    return;
   }
 
 }

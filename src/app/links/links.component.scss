@@ -10,3 +10,12 @@ table, th, td {
   table tr:nth-child(even) {
     background-color: #ffffff;
   }
+  .photo {
+    padding: 0px 0px 0px 0px;
+    border: 3px solid #fff;
+    outline: 1px solid #000;
+    margin: 1px;
+    width: 125px;
+    height: 95px;
+    display: block;
+ }

@@ -15,32 +15,35 @@ export class ImagesComponent implements OnInit {
   editId: string = '';
   images$: Image[];
 
-  constructor(private dataservice_a: DataService) { }
+  message: string;
+
+  constructor(private dataservice: DataService) { }
 
   ngOnInit() {
+    this.dataservice.currentMessage.subscribe(message => this.message = message);
     return (
-    this.dataservice_a.getImages().subscribe(data => this.images$ = data)
+    this.dataservice.getImages().subscribe(data => this.images$ = data)
     );
   }
 
   editImage(id: any) {
     this.editOn = !this.editOn; // toggle it
     if (this.editOn) { this.editId = id};
-    console.log("editImage()");
+    console.log("editImage(" + id +")");
   }
 
   updateImage(id: any, filename: string, camera: string, date: Date, time: string, description: Text, lastUpdate: string, status: string) {
     console.log("updateImage("  + id + 
-", " + filename +
-", " + camera + 
-", " + date +
-", " + time +
-", " + description +
-", " + lastUpdate +
-", " + status +    
+      ", " + filename +
+      ", " + camera + 
+      ", " + date +
+      ", " + time +
+      ", " + description +
+      ", " + lastUpdate +
+      ", " + status +    
     ")");
 
-    this.dataservice_a.updateImage(id, filename, camera, date, time, description, lastUpdate, status); 
+    this.dataservice.updateImage(id, filename, camera, date, time, description, lastUpdate, status); 
         // .subscribe(data => this.images$ = data);
     this.editOn = false;
   }

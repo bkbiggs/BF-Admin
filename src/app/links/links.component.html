@@ -1,11 +1,16 @@
 
 <h2 *ngIf="links$" style="padding: 10px">Bird/Picture Links</h2>
+<p></p>
+Message: {{ message }}
+<p></p>
+
 <table>
     <tr>
         <th>link id</th>
         <th>bird id</th>
         <th>image id</th>
         <th>action</th>
+        <th>image</th>
     </tr>
     <tr *ngFor='let link of links$'>
         <td>
@@ -23,6 +28,13 @@
                 (click)="deleteLink(link.id)">
                 Delete</button>
         </td>
+        <td>
+            <a href="http://10.0.1.14/images/image201901161301_pi15.jpg" target="_blank">
+                <img class="photo"
+                src="http://10.0.1.14/images/icon_image201901161301_pi15.jpg" 
+                alt="image">
+            </a>
+        </td>
     </tr>
 
 </table>
@@ -39,3 +51,8 @@ ImageId:
 <button (click)="createLink(newBirdId.value, newImageId.value)">Add</button>
 
 <hr>
+birds: <br>
+<div *ngFor="let bird of birds$">
+    <img src="{{bird.webImage}}" alt="{{bird.commonName}}"><br>
+</div>
+
