@@ -34,7 +34,7 @@ export class DataService {
   }
 
   // add createImageUrl
-  updateImageUrl =  'http://10.0.1.14/updateDescription/myDescEdit.php';
+  updateImageUrl =  'http://10.0.1.14/updateDescription/updateImageData.php';
   // add deleteImageUrl
   getImageUrl = 'http://10.0.1.14/updateDescription/getImageData.php';
   
@@ -76,12 +76,13 @@ export class DataService {
 
   updateImage(id: string, filename: string, camera: string, date: Date, time: string, description: Text, lastUpdate: string, status: string)  {
     console.log("updateImage(" + id + ")");
-    var request = "this.updateImageUrl + ?id=" + id +
-      "&filename=" + filename + "&camera=" + camera + "&date=" + date + "?time=" + time +
+    var request = this.updateImageUrl + "?id=" + id +
+      "&filename=" + filename + "&camera=" + camera + "&date=" + date + "&time=" + time +
        "&desc=" + description + "&lastUpdate=" + lastUpdate + "&status=" + status;
     console.log("request: " + request);
     var response = this._http.get<Image[]>(request);
-    // return this._http.get<Bird[]>(this.imageUrl + "?id=" + id); 
+    // return this._http.get<Bird[]>(this.imageUrl + "?id=" + id);
+    return(response);
   }
 
 

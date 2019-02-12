@@ -1,58 +1,124 @@
+<!-- <script>
+    (function (d, timeout) {
+        window.addEventListener("load", function () {
+            resizeHandler();
+        }, false);
 
-<h2 *ngIf="links$" style="padding: 10px">Bird/Picture Links</h2>
-<p></p>
-Message: {{ message }}
-<p></p>
+        window.addEventListener("resize", function () {
+            if (!timeout) {
+                timeout = setTimeout(function () {
+                    timeout = null;
+                    // do resize stuff
+                    resizeHandler();
+                }, 66);
+            }
+        }, false);
 
-<table>
-    <tr>
-        <th>link id</th>
-        <th>bird id</th>
-        <th>image id</th>
-        <th>action</th>
-        <th>image</th>
-    </tr>
-    <tr *ngFor='let link of links$'>
-        <td>
-            {{ link.id }}
+        function resizeHandler() {
+            if (window.innerHeight < window.innerWidth) {
+                if (!(d.body.classList.contains('landscape'))) {
+                    d.body.classList.add('landscape');
+                    d.body.appendChild(d.querySelector('nav'));
+                }
+            } else {
+                if (d.body.classList.contains('landscape')) {
+                    d.body.classList.remove('landscape')
+                    d.querySelector('section').appendChild(d.querySelector('nav'));
+                }
+            }
+        }
+    }(document));
+</script> -->
 
-        </td>
-        <td>
-            {{ link.birdId }}
-        </td>
-        <td>
-            {{ link.imageId }}
-        </td>
-        <td>
-            <button style="font-size: 10px;"
-                (click)="deleteLink(link.id)">
-                Delete</button>
-        </td>
-        <td>
-            <a href="http://10.0.1.14/images/image201901161301_pi15.jpg" target="_blank">
-                <img class="photo"
-                src="http://10.0.1.14/images/icon_image201901161301_pi15.jpg" 
-                alt="image">
-            </a>
-        </td>
-    </tr>
 
-</table>
-<p></p>
-<hr>
-<p></p>
-<br>
-BirdId:
-<input #newBirdId name="newBirdId" value="">
-<br>
-ImageId:
-<input #newImageId name="newImageId" value="">
-<p></p>
-<button (click)="createLink(newBirdId.value, newImageId.value)">Add</button>
+<section>
 
-<hr>
-birds: <br>
-<div *ngFor="let bird of birds$">
-    <img src="{{bird.webImage}}" alt="{{bird.commonName}}"><br>
-</div>
+    <div class="grid-container">
 
+        <div class="item5">
+            <h2 *ngIf="links$" style="padding: 10px">Bird/Picture Links</h2>
+        </div>
+
+
+        <div class="item3" style="text-align: left;height: 400px;" overflow="scroll">
+            <table>
+                <tr>
+                    <th>link id</th>
+                    <th>bird id</th>
+                    <th>image id</th>
+                    <th>action</th>
+                    <th>image</th>
+                </tr>
+                <tr *ngFor='let link of links$' style=" border: 3px solid #fff; outline: 1px solid #000;">
+                    <td>
+                        {{ link.id }}
+
+                    </td>
+                    <td>
+                        {{ link.birdId }}
+                    </td>
+                    <td>
+                        {{ link.imageId }}
+                    </td>
+                    <td>
+                        <button style="font-size: 12px;" (click)="deleteLink(link.id)">
+                            Delete</button>
+                    </td>
+                    <td>
+                        <div class="photo">
+                            <a href="http://10.0.1.14/images/image201901161301_pi15.jpg" target="_blank">
+                                <img class="photo" src="http://10.0.1.14/images/icon_image201901161301_pi15.jpg"
+                                    alt="image">
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <div class="item4">
+            Hello!
+            <p></p>
+            Message: {{ message }}
+            <p></p>
+        </div>
+
+        <div class="item1">
+            <div style="font-size:30px;"><em>Bird/Picture Links</em></div>
+            <div>
+                BirdId:
+                <input #newBirdId name="newBirdId" value="">
+            </div>
+            <div>
+                ImageId:
+                <input #newImageId name="newImageId" value="">
+            </div>
+            <button style="font-size: 12px;" (click)="createLink(newBirdId.value, newImageId.value)">Add</button>
+        </div>
+
+
+        <div class="item2">
+            <hr>
+            birds: <br>
+            <div *ngFor="let bird of birds$">
+                <img src="{{bird.webImage}}" alt="{{bird.commonName}}"><br>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- <header class="header">header</header> -->
+    <!-- <main>content
+          <div>
+            This div get a height when in landscape to show scroll in section
+          </div>
+        </main> -->
+    <!-- <footer>footer</footer> -->
+    <!-- <nav>navigation
+          <div>
+            This div get a height when in landscape to show scroll in nav
+          </div>
+        </nav> -->
+</section>

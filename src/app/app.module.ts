@@ -13,13 +13,15 @@ import { LinksComponent } from './links/links.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BirdsComponent,
     ImagesComponent,
-    LinksComponent,
+    LinksComponent
+
   ],
   imports: [
     BrowserModule,
